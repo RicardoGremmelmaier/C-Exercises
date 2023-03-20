@@ -50,3 +50,5 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+Data Structures/Data Structures pt.1/Sorting/insertion_rec.c
+Data Structures/Data Structures pt.1/Sorting/game
