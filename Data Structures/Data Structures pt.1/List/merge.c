@@ -1,90 +1,54 @@
 #include "list.h"
 #include "list.c"
 
-/* */
+
 List* merge (List *A, List *B){
-    List *Anxt = A->next, *Bnxt = B->next, *C = NULL;
+  List *C = NULL;
+  List *t;
 
-    if (A->data <= B->data)
+  //Verificando ocorrencia de lista vazia
+  if(A == NULL && B != NULL){return B;}
+  if(B == NULL && A != NULL){return A;}
+
+
+  //enquanto uma das duas listas nao forem vazias
+  while(A != NULL && B != NULL){
+    
+    //Verifico qual a maior data
+    if(A->data <= B->data){
+      //Caso seja a primeira iteracao
+      if(C == NULL){
         C = A;
-    else
-        C = B;
-
-
-    //Enquanto nao for final da fila dos dois
-    while (Anxt != NULL || Bnxt != NULL){
-
-        //Final da fila do A
-        if (Anxt == NULL){
-
-            //E o ultimo valor de A eh menor que o de B
-            if(A->data <= B->data){
-                A->next = B;
-            } else{
-                if(A->data <= Bnxt->data){
-                    A->next = Bnxt;
-                    B->next = A;
-                } else {
-                    //Rodo o bnxt ate achar onde encaixar o A
-                    return 0;
-                }
-            }
-
-            return C;
-        }
-
-        //Final da fila do B
-        if (Bnxt == NULL){
-
-            //E o ultimo valor de B eh menor que o de A
-            if(B->data <= A->data){
-                B->next = A;
-            } else{
-
-                if(B->data <= Anxt->data){
-                    B->next = Anxt;
-                    A->next = B;
-                } else {
-                    //Rodo o bnxt ate achar onde encaixar o B
-                    return 0;
-                }
-            }
-
-            return C;
-        }
-
-        //Se a data do A for menor que a data do B
-        if (A->data <= B->data){
-
-            //E o proximo do A for maior que o B
-            if ((A->next)->data > B->data){
-                A->next = B;
-                A = Anxt;
-                Anxt = Anxt->next;
-
-            } else {
-                A = Anxt;
-                Anxt = Anxt->next;
-            }
-
-        //Se a data do B for menor que a data do A
-        } else {
-
-            //E o proximo do B for maior que o A
-            if((B->next)->data > A->data){
-
-                B->next = A;
-                B = Bnxt;
-                Bnxt = Bnxt->next;
-
-            } else {
-                B = Bnxt;
-                Bnxt = Bnxt->next;
-            }
-        }
+        t = C;
+        A = A->next;
+      //Caso nao seja a primeira iteracao
+      } else{
+        t->next = A;
+        A = A->next;
+        t = t->next;
+      }
     }
 
-    return C;
+    else{
+      //Primeira iteracao
+      if(C == NULL){
+        C = B;
+        t = C;
+        B = B->next;
+      //Caso nao seja primeira iteracao
+      }else{
+        t->next = B;
+        B = B->next;
+        t = t->next;
+      }
+    }
+  }
+
+  if (A == NULL){t->next = B;} 
+  else {t->next = A;}
+  
+
+  return C;
 }
 
 /* */
