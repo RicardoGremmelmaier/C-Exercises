@@ -133,8 +133,5 @@ int main () {
     printf("Maximo valor: %d\n", max(l));
     printf("Position do maximo = %d\n", position(l, max(l)));
 
-    l = insert_sort(l,13);
-    print(l);
-    printf("\n");
     return 0;
 }
