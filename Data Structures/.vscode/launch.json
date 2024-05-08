@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Ricar/OneDrive/Documentos/MeusProjetos/C-Exercises/Data Structures/Data Structures pt.1/List",
-      "program": "c:/Users/Ricar/OneDrive/Documentos/MeusProjetos/C-Exercises/Data Structures/Data Structures pt.1/List/build/Debug/outDebug",
+      "cwd": ".",
+      "program": "build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
