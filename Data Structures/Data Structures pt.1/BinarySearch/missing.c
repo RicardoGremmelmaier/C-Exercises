@@ -1,4 +1,5 @@
 #include "utils.h"
+#include "utils.c"
 
 /* */
 int missing_number (int *A, int n) {
@@ -16,9 +17,11 @@ int missing_number (int *A, int n) {
 		if (A[middle] == middle)
 			left = middle +1;
 
-		if ((A[middle] != middle) && (A[middle-1] == middle-1))
+		else if ((A[middle] != middle) && (A[middle-1] == middle-1))
 			return middle;
 		
+    else 
+      right = middle -1;
 		middle = (left+right)/2;
 	}		
 
@@ -32,8 +35,8 @@ int main () {
   //int A[] = {0,1,2,3};
   //int n = 4;
   //int A[] = {4,5,10,11};
-  int n = 7;
-  int A[] = {0,1,2,6,9,11,15};
+  int n = 9;
+  int A[] = {0,1,2,4,5,6,9,11,15};
   //int n = 8;
   //int A[] = {1,2,3,4,6,9,11,15};
   //int n = 7;

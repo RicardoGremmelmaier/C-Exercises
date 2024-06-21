@@ -1,14 +1,58 @@
 #include "utils.h"
 
+
+/* */
+void swap (int *A, int i, int j) {
+  int t = A[i];
+  A[i] = A[j];
+  A[j] = t;
+}
+
+/* */
+void swap_string (char **A, int i, int j) {
+  char *t = A[i];
+  A[i] = A[j];
+  A[j] = t;
+}
+
+/* */
+void print (int *A, int n, char *message) {
+  printf("%s\n", message);
+  int i;
+  printf("A: {");
+  for (i = 0; i < n; i++) {
+    if (i == n-1)
+      printf("%d", A[i]);
+    else    
+      printf("%d,", A[i]);
+  }
+  printf("}\n");
+}
+
+/* */
+int check (int *A, int n, int ascending) {
+  int i;
+  for (i = 1; i < n; i++) {
+    if (ascending) {
+      if (A[i-1] > A[i])
+        return FALSE;	      
+    }
+    else {
+      if (A[i-1] < A[i])
+        return FALSE;	      
+    }    
+  }
+  return TRUE;  
+}
+
 /* */
 void insertion_sort (int *A, int n) {
 	int i, j, chave;
 	for(i = 1; i < n; i++) {
-		A[i] = chave;
+		chave = A[i];
 		for(j = i-1; j >= 0; j--) {
 			if(chave < A[j]) { 
 				A[j+1] = A[j];
-				A[j] = chave;
 			}
 			else {
 				A[j+1] = chave;
@@ -60,7 +104,7 @@ int main (int argc, char *argv[]) {
 
   start = clock();
   print (A, n, "Input");
-  insertion_sort_recursive (A, n);
+  insertion_sort (A, n);
   print (A, n, "Sorted");
   end = clock();
   elapsed_time = (end - start)/(double)CLOCKS_PER_SEC;

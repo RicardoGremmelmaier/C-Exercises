@@ -55,6 +55,7 @@ int binary_search_recursive (char **words, int l, int r, char *key) {
 	return NOT_FOUND;
 }
 
+
 /* */
 int get_number_of_lines (FILE *f) {
   int n = 0;
@@ -71,14 +72,10 @@ int get_number_of_lines (FILE *f) {
 }
 
 /* */
-int main (int argc, char *argv[]) {
-  if (argc < 2) { 
-    printf("run: %s [word_to_search]\n", argv[0]);
-    exit(1);
-  }  
+int main () {  
   clock_t start, end;
   double elapsed_time;
-  char *key = argv[1];
+  char *key = "ACADEMICO";
   FILE *f = fopen("palavras.txt", "r"); 
   int n = get_number_of_lines(f);
   char **words = (char **)malloc(n * sizeof(char *));
